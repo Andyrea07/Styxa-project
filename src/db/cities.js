@@ -6,7 +6,7 @@ export function createCities() {
           id INT GENERATED ALWAYS AS IDENTITY,
           name VARCHAR(100) NOT NULL,
           description VARCHAR(500),
-          popularity INT,
+          population INT,
           country_id INT,
 
           PRIMARY KEY(id),
@@ -17,10 +17,10 @@ export function createCities() {
           )`)
 }
 
-export async function addCities(name, description, popularity, country_id) {
+export async function addCities(name, description, population, country_id) {
   await client.query(`
-          INSERT INTO Cities (id, name, description, popularity, country_id)
-          VALUES (DEFAULT, '${name}', '${description}', ${popularity}, ${country_id})
+          INSERT INTO Cities (id, name, description, population, country_id)
+          VALUES (DEFAULT, '${name}', '${description}', ${population}, ${country_id})
           `)
 }
 

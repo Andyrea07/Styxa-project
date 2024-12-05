@@ -6,12 +6,12 @@ import {
 } from '../db/cities.js'
 
 async function GetCities(req, res) {
-  res.send(await getCities())
+  const { id } = req.params
+  res.send(await getCities(id))
 }
-
 async function AddCities(req, res) {
-  const { name, description, popularity, country_id } = req.body
-  res.send(await addCities(name, description, popularity, country_id))
+  const { name, description, population, country_id } = req.body
+  res.send(await addCities(name, description, population, country_id))
 }
 
 async function UpdateCities(req, res) {
