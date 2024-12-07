@@ -23,8 +23,13 @@ export async function addCities(name, description, population, country_id) {
           VALUES (DEFAULT, '${name}', '${description}', ${population}, ${country_id})
           `)
 }
-
 export async function getCities() {
+  const cities = await client.query(`
+        SELECT * FROM Cities
+        `)
+  return cities.rows
+}
+export async function getCitiesByID() {
   const cities = await client.query(`
         SELECT * FROM Cities
         `)

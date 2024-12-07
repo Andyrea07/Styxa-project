@@ -1,5 +1,6 @@
 import {
   getCountry,
+  getCountryByID,
   addCountry,
   updateCountry,
   deleteCountry
@@ -7,6 +8,12 @@ import {
 
 async function GetCountry(req, res) {
   res.send(await getCountry())
+}
+
+async function GetCountryByID(req, res) {
+  console.log('GET /country')
+  const { id } = req.params
+  res.send(await getCountryByID(id))
 }
 
 async function AddCountry(req, res) {
@@ -27,6 +34,7 @@ async function DeleteCountry(req, res) {
 
 export const countryController = {
   GetCountry,
+  GetCountryByID,
   AddCountry,
   UpdateCountry,
   DeleteCountry

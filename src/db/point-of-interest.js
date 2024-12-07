@@ -38,6 +38,13 @@ export async function getPointOfInterest() {
   return pointOfInterest.rows
 }
 
+export async function getPointOfInterestByID() {
+  const pointOfInterest = await client.query(`
+          SELECT * FROM PointOfInterest
+          `)
+  return pointOfInterest.rows
+}
+
 export async function updatePointOfInterest(id, description) {
   const pointOfInterest = await client.query(`
           UPDATE PointOfInterest

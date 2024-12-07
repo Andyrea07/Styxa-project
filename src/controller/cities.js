@@ -1,14 +1,21 @@
 import {
   getCities,
+  getCitiesByID,
   addCities,
   updateCities,
   deleteCities
 } from '../db/cities.js'
 
-async function GetCities(req, res) {
+async function GetCitiesByID(req, res) {
+  console.log('GET /cities')
   const { id } = req.params
-  res.send(await getCities(id))
+  res.send(await getCitiesByID(id))
 }
+
+async function GetCities(req, res) {
+  res.send(await getCities())
+}
+
 async function AddCities(req, res) {
   const { name, description, population, country_id } = req.body
   res.send(await addCities(name, description, population, country_id))
@@ -26,6 +33,7 @@ async function DeleteCities(req, res) {
 }
 
 export const citiesController = {
+  GetCitiesByID,
   GetCities,
   AddCities,
   UpdateCities,

@@ -27,6 +27,13 @@ export async function getCountry() {
   return country.rows
 }
 
+export async function getCountryByID() {
+  const country = await client.query(`
+        SELECT * FROM Country
+        `)
+  return country.rows
+}
+
 export async function updateCountry(id, description) {
   const country = await client.query(`
         UPDATE Country

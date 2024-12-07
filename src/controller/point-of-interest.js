@@ -1,12 +1,18 @@
 import {
   addPointOfInterest,
   getPointOfInterest,
+  getPointOfInterestByID,
   updatePointOfInterest,
   deletePointOfInterest
 } from '../db/point-of-interest.js'
 
 async function GetPointOfInterest(req, res) {
   res.send(await getPointOfInterest())
+}
+
+async function GetPointOfInterestByID(req, res) {
+  const { id } = req.params
+  res.send(await getPointOfInterestByID(id))
 }
 
 async function AddPointOfInterest(req, res) {
@@ -35,6 +41,7 @@ async function DeletePointOfInterest(req, res) {
 
 export const pointOfInterestController = {
   GetPointOfInterest,
+  GetPointOfInterestByID,
   AddPointOfInterest,
   UpdatePointOfInterest,
   DeletePointOfInterest
