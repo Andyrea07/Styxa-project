@@ -7,8 +7,6 @@ export function createPointOfInterest() {
         name VARCHAR(100),
         description VARCHAR(500),
         city_id INT,
-        google_maps_URL TEXT,
-        images TEXT,
 
         PRIMARY KEY (id),
 
@@ -18,16 +16,10 @@ export function createPointOfInterest() {
 )`)
 }
 
-export async function addPointOfInterest(
-  name,
-  description,
-  city_id,
-  google_maps_URL,
-  images
-) {
+export async function addPointOfInterest(name, description, city_id) {
   await client.query(`
-            INSERT INTO PointOfInterest (id, name, description, city_id, google_maps_URL, images)
-            VALUES (DEFAULT, '${name}', '${description}', ${city_id}, ${google_maps_URL}, ${images}})
+            INSERT INTO PointOfInterest (id, name, description, city_id)
+            VALUES (DEFAULT, '${name}', '${description}', ${city_id})
             `)
 }
 

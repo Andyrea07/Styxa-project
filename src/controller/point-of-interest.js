@@ -7,6 +7,7 @@ import {
 } from '../db/point-of-interest.js'
 
 async function GetPointOfInterest(req, res) {
+  console.log('Meghivja')
   res.send(await getPointOfInterest())
 }
 
@@ -16,16 +17,8 @@ async function GetPointOfInterestByID(req, res) {
 }
 
 async function AddPointOfInterest(req, res) {
-  const { name, description, city_id, google_maps_URL, images } = req.body
-  res.send(
-    await addPointOfInterest(
-      name,
-      description,
-      city_id,
-      google_maps_URL,
-      images
-    )
-  )
+  const { name, description, city_id } = req.body
+  res.send(await addPointOfInterest(name, description, city_id))
 }
 
 async function UpdatePointOfInterest(req, res) {
